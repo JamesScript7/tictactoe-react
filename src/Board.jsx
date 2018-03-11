@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 // COMPONENTS:
 import Square from './Square';
 
-class Board extends React.Component {
+class Board extends Component {
   // Value is 'X', 'O', or null
   // onClick is automatically bound if you use '() =>'
   renderSquare(i) {
