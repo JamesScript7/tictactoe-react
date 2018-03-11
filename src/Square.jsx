@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // This is a functional component:
 // Creates each square cell and attached onClick event listener.
