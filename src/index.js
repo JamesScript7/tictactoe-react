@@ -13,6 +13,7 @@ class Game extends React.Component {
       history: [{
         squares: Array(9).fill(null),
       }],
+      stepNumber: 0,
       xIsNext: true,
     }
   }
@@ -21,7 +22,8 @@ class Game extends React.Component {
   // 2. Makes it equal 'X' or 'O'.
   // 3. Sets new array with updated 'X' or 'O' from original null value.
   handleClick(i) {
-    const history = this.state.history;
+    // History is set by the step number.
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
 
@@ -38,13 +40,22 @@ class Game extends React.Component {
       history: history.concat([{
         squares: squares,
       }]),
+      stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
+    });
+  }
+
+  jumpTo(step) {
+    // This sets the new step number if the user clicked to go back.
+    this.setState({
+      stepNumber: step,
+      xIsNext: (step % 2) === 0,
     });
   }
 
   render() {
     const history = this.state.history;
-    const current = history[history.length - 1];
+    const current = history[this.state.stepNumber];
     const winner = calcWinner(current.squares);
 
     // Usually you can return tailored HTML tags with map method.
