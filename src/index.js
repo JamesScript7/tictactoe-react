@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+
+// CSS
 import './index.css';
 
-// COMPONENTS:
-import Game from './Game';
-
-class App extends Component {
-  render() {
-    return (
-      <Game />
-    )
-  }
-}
+import App from './App';
 
 // ========================================
 
